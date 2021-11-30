@@ -15,10 +15,12 @@ s0 = net.addSwitch('s0')
 net.addLink(s, s0)
 net.addLink(r, s0)
 
-# Start the network
-net.start()
+
 s.setIP('192.168.1.1', 24)
 r.setIP('192.168.1.2', 24)
+
+# Start the network
+net.start()
 net.pingAll()
 
 # Run s.py on the host s
