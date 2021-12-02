@@ -6,7 +6,7 @@ PORT = 65432        # The port used by the server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    request = 'Request\nSorted Quantity'
+    request = 'Request\nUpdate f 19'
     s.sendall(request.encode())
     data = s.recv(1024)
 

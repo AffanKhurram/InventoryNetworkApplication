@@ -1,0 +1,10 @@
+Connected by ('192.168.1.2', 51228)
+Entered update
+f 19
+b,2,20-11-20
+c,19,21-12-1
+a,10,21-11-10
+
+
+changes are abbout to be made 
+

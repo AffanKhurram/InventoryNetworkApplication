@@ -21,11 +21,40 @@ def create_string(arr):
         s = s[:-1]
     return s
 
+def create_string_1(name, amount, date):
+    s = ''
+    
+    s += name + "," + amount + "," + date
+    return s
+
 def updated(name, newq):
-    with open('inventory.txt', 'w+') as f:
+    with open('inventory.txt', 'r') as f:
         lines = f.read().split('\n')
         for line in lines:
+            # fields = line.split(',')
+            # #print(fields)
+            # #new_item = create_string_1(fields[0], newq, fields[2])
+            # #print(new_item)
+            # if fields[0] == name:
+            #     new_item = create_string_1(fields[0], newq, fields[2])
+            #     print(new_item)
             print(line)
+    with open('inventory.txt', 'w') as f:
+        flag = False
+        print("changes are abbout to be made \n")
+        for line in lines:
+            fields = line.split(',')
+            if fields[0] == name:
+                flag = True
+                new_item = create_string_1(fields[0], newq, fields[2])
+                f.write(new_item + "\n") 
+            else:
+                f.write(line + "\n")
+        if flag == True:
+            return 'Success'
+        else:
+            return 'Unable to find Item name'
+            
 
 # items = sorted(0)
 # items = [','.join(x) for x in items]
