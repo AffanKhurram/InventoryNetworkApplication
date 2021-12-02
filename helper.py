@@ -21,6 +21,12 @@ def create_string(arr):
         s = s[:-1]
     return s
 
+def updated(name, newq):
+    with open('inventory.txt', 'w+') as f:
+        lines = f.read().split('\n')
+        for line in lines:
+            print(line)
+
 # items = sorted(0)
 # items = [','.join(x) for x in items]
 # print(pickle.loads(pickle.dumps(items)))
