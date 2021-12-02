@@ -1,5 +1,5 @@
 import socket
-from helper import sorted
+from helper import sorted, create_string
 import pickle
 
 HOST = '192.168.1.1'
@@ -24,7 +24,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 if message_type == 'Sorted':
                     if line2[1] == 'Name':
                         print('Sorting by name')
-                        conn.sendall(pickle.dumps(sorted(0)))
+                        file_text = create_string(sorted(0))
+                        response = 'Response\ndata\n' + file_text
+                        conn.sendall(response.encode())
                     elif line2[1] == 'Quantity':
                         sorted(1)
                     elif line2[1] == 'Date':
