@@ -23,4 +23,4 @@ time.sleep(5)
 result = r.cmd('python3 client.py')
 print(result)
 
-net.stop()
+net.stop()  

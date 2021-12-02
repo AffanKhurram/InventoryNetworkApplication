@@ -1,4 +1,6 @@
 import socket
+from helper import sorted
+import pickle
 
 HOST = '192.168.1.1'
 PORT = 65432
@@ -10,7 +12,28 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn: 
         print('Connected by', addr)
         while True:
-            data = conn.recv(1024)
+            data = conn.recv(1024).decode()
             if not data:
                 break
-            conn.sendall(data)
+            # Parse the request
+            lines = data.split('\n')
+            if lines[0].strip() == 'Request':
+                # handle request
+                line2 = lines[1].split()
+                message_type = line2[0]
+                if message_type == 'Sorted':
+                    if line2[1] == 'Name':
+                        print('Sorting by name')
+                        conn.sendall(pickle.dumps(sorted(0)))
+                    elif line2[1] == 'Quantity':
+                        sorted(1)
+                    elif line2[1] == 'Date':
+                        sorted(2)
+                    else:
+                        conn.sendall(('Invalid data field: ' + line2[1]).encode())
+
+            else:
+                conn.sendall(('Error, uknown message: ' + lines[0]).encode())
+            
+
+
