@@ -1,10 +1,14 @@
-import pickle
 
 def sorted(sort_by):
     with open('inventory.txt', 'r') as f:
         lines = f.read().split('\n')
         items = [tuple(line.split(',')) for line in lines]
-        items.sort(key=lambda x: x[sort_by])
+        if sort_by != 1:
+            items.sort(key=lambda x: x[sort_by])
+        else:
+            # if sorting by quantity, first turn parse it into integer
+            items.sort(key=lambda x: int(x[sort_by]))
+        print(items)
         return items
 
 def create_string(arr):

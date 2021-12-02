@@ -28,11 +28,18 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                         response = 'Response\ndata\n' + file_text
                         conn.sendall(response.encode())
                     elif line2[1] == 'Quantity':
-                        sorted(1)
+                        print('Sorting by quantity')
+                        file_text = create_string(sorted(1))
+                        response = 'Response\ndata\n' + file_text
+                        conn.sendall(response.encode())
                     elif line2[1] == 'Date':
-                        sorted(2)
+                        print('Sorting by date')
+                        file_text = create_string(sorted(2))
+                        response = 'Response\nsuccess\n' + file_text
+                        conn.sendall(response.encode())
                     else:
-                        conn.sendall(('Invalid data field: ' + line2[1]).encode())
+                        response = 'Response\nerror\nInvalid data field: ' + line2[1]
+                        conn.sendall(response.encode())
 
             else:
                 conn.sendall(('Error, uknown message: ' + lines[0]).encode())

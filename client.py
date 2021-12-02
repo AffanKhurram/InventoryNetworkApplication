@@ -6,11 +6,12 @@ PORT = 65432        # The port used by the server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    request = 'Request\nSorted Name'
+    request = 'Request\nSorted Quantity'
     s.sendall(request.encode())
     data = s.recv(1024)
 
 s = data.decode()
+print(s)
 lines = s.split('\n')
 if lines[0].strip() == 'Response':
     # the inventory file was returned
@@ -25,8 +26,8 @@ if lines[0].strip() == 'Response':
     elif lines[1].strip() == 'success':
         pass
     # Some sort of error received
-    elif lines[2].strip() == 'error':
-        pass
+    elif lines[1].strip() == 'error':
+        print('Error received: ' + lines[2])
     else:
         # Unknown response
         pass
