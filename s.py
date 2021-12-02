@@ -1,5 +1,5 @@
 import socket
-from helper import sorted, create_string, updated
+from helper import delete, sorted, create_string, updated
 import pickle
 
 HOST = '192.168.1.1'
@@ -41,12 +41,19 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                         response = 'Response\nerror\nInvalid data field: ' + line2[1]
                         conn.sendall(response.encode())
 
-                if message_type == 'Update':
+                elif message_type == 'Update':
                     print("Entered update")
                     name = line2[1]
                     newq = line2[2]
                     print(name + " " + newq)
                     msg = updated(name, newq)
+                    conn.sendall(msg.encode())
+
+                elif message_type == "Delete":
+                    print("Entered delete")
+                    name = line2[1]
+                    print(name)
+                    msg = delete(name)
                     conn.sendall(msg.encode())
 
             else:

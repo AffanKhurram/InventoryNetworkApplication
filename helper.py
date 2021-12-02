@@ -55,6 +55,25 @@ def updated(name, newq):
         else:
             return 'Unable to find Item name'
             
+def delete(name):
+    with open('inventory.txt', 'r') as f:
+        lines = f.read().split('\n')
+        for line in lines:
+            print(line)
+    with open('inventory.txt', 'w') as f:
+        flag = False
+        print("changes are about to be made \n")
+        for line in lines:
+            fields = line.split(',')
+            if fields[0] == name:
+                flag = True
+                #f.write(new_item + "\n") 
+            else:
+                f.write(line + "\n")
+        if flag == True:
+            return 'Success'
+        else:
+            return 'Unable to find Item name'
 
 # items = sorted(0)
 # items = [','.join(x) for x in items]
