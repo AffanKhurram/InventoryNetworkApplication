@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Connected by ('192.168.1.2', 54868)
 Sorting by name
 3
@@ -9,6 +10,8 @@ Response
 data
 computer,9,20-09-27;monitor,3,20-01-19;phone,15,20-11-20;table,10,21-09-10
 =======
+=======
+>>>>>>> 467ea24e1f0c795e6916724335e702e2f5980424
 Connected by ('192.168.1.2', 52870)
 Entered delete
 a
@@ -17,4 +20,7 @@ c,19,21-12-1
 a,23,21-11-10
 changes are about to be made 
 
+<<<<<<< HEAD
+>>>>>>> 467ea24e1f0c795e6916724335e702e2f5980424
+=======
 >>>>>>> 467ea24e1f0c795e6916724335e702e2f5980424
